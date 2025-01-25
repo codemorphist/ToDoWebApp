@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todo List</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <a href="{% url 'add_todo' %}">Add Todo</a>
+    <ul>
+    {% for todo in todos %}
+        <li>
+            <span style="text-decoration: {% if todo.completed %}line-through{% endif %}">{{ todo.title }}</span> - {{ todo.description }}
+            <a href="{% url 'toggle_completed' todo.id %}">Toggle Completed</a> | 
+            <a href="{% url 'delete_todo' todo.id %}">Delete</a>
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
+
